@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char a[100], b[100], res[200];
+    scanf("%s %s", a, b);
+
+    int i = strlen(a) - 1;
+    int j = strlen(b) - 1;
+    int k = 0, carry = 0;
+
+    while (i >= 0 || j >= 0 || carry) {
+        int sum = carry;
+
+        if (i >= 0) sum += a[i--] - '0';
+        if (j >= 0) sum += b[j--] - '0';
+
+        res[k++] = (sum % 2) + '0';
+        carry = sum / 2;
+    }
+
+    res[k] = '\0';
+
+    for (int x = 0; x < k / 2; x++) {
+        char temp = res[x];
+        res[x] = res[k - 1 - x];
+        res[k - 1 - x] = temp;
+    }
+
+    printf("Sum = %s\n", res);
+
+    return 0;
+}
+
+/*
+Input:
+1010 1011
+
+Output:
+Sum = 10101
+*/

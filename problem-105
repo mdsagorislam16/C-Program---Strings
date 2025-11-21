@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[200];
+    fgets(s, sizeof(s), stdin);
+
+    s[strcspn(s, "\n")] = '\0';
+
+    int i, j = 0;
+    char word[50];
+
+    for (i=0; ; i++) {
+        if (s[i]==' ' || s[i]=='\0') {
+            word[j]='\0';
+            if (j>0) printf("%s\n", word);
+            j=0;
+            if (s[i]=='\0') break;
+        } else {
+            word[j++] = s[i];
+        }
+    }
+
+    return 0;
+}
+
+/*
+Input:
+I love C programming
+
+Output:
+I
+love
+C
+programming
+*/

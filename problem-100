@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    char s[200];
+    int idx;
+    fgets(s, sizeof(s), stdin);
+    scanf("%d", &idx);
+
+    printf("Unicode of s[%d] = %d\n", idx, s[idx]);
+
+    return 0;
+}
+
+/*
+Input:
+Hello
+1
+
+Output:
+Unicode of s[1] = 101
+*/

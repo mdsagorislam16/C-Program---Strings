@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    char a[200], b[200];
+    fgets(a, sizeof(a), stdin);
+    fgets(b, sizeof(b), stdin);
+
+    // remove newline
+    int n = strlen(a); if (a[n-1]=='\n') a[n-1]='\0';
+    n = strlen(b); if (b[n-1]=='\n') b[n-1]='\0';
+
+    int i;
+    for (i=0; a[i]!='\0' && b[i]!='\0'; i++) {
+        if (a[i]!=b[i]) break;
+    }
+
+    if (a[i]==b[i]) printf("Equal\n");
+    else printf("Not Equal\n");
+
+    return 0;
+}
+
+/*
+Input:
+Hello
+Hello
+
+Output:
+Equal
+*/
